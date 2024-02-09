@@ -1,0 +1,55 @@
+﻿@inject NavigationManager navigationManager;
+@*Scrollable space for the head banner*@
+@* <div style="height:150px;">
+	Test
+</div> *@
+﻿<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+	<div class="container-fluid">		
+		<button class="navbar-toggler @NavButtonCssClass" type="button" aria-controls="navbarCollapse"
+				aria-label="Toggle navigation" @onclick="toggleNavMenu">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse @NavBarCssClass" id="navbarCollapse" @onclick="toggleNavMenu">
+			<ul class="navbar-nav me-auto mb-2 mb-md-0">
+				@*The Nav-Items will be generated dynamically in the future*@
+				@*The Nav-Bar will get a design-overhaul in the future with custom buttons, frames etc.*@
+				<li class="nav-item px-2">					
+					<NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+						<span class="oi oi-home" aria-hidden="true"></span> Home
+					</NavLink>
+				</li>				
+				<li class="nav-item px-2">					
+					<NavLink class="nav-link" href="projects">
+						<span class="oi oi-list-rich" aria-hidden="true"></span> Projects
+					</NavLink>
+				</li>
+				<li class="nav-item px-2">					
+					<NavLink class="nav-link" href="about">
+					<span class="oi oi-list-rich" aria-hidden="true"></span> About
+					</NavLink>
+				</li>
+				<li class="nav-item px-2">					
+					<NavLink class="nav-link" href="contact">
+					<span class="oi oi-list-rich" aria-hidden="true"></span> Contact
+					</NavLink>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+@code {
+	private bool collapseNavMenu = true;	
+	private string? NavBarCssClass => collapseNavMenu ? null : "show";
+	private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
+
+	private void toggleNavMenu()
+	{
+		collapseNavMenu = !collapseNavMenu;
+	}
+
+	private void navigate(string action)
+	{
+		navigationManager.NavigateTo(action);
+	}
+}
