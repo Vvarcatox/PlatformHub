@@ -2,7 +2,15 @@ $back-black: #121212;
 $font-white: #eaeaea;
 $font-gold: #fffbb0;
 
-.blackpage{
+.blackpage, .blackbar{
     background-color:$back-black;
     color:$font-white;    
+}
+
+.navbar-dark{
+    background-color: $back-black;
+}
+
+.pagecontent{
+    padding-top:66px;
 }
